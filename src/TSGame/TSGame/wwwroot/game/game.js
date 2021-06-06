@@ -1,6 +1,8 @@
 ﻿import Engine from "../engine/core/engine.js";
+import EntityManager from "../engine/core/entity-manager.js";
 
 import Player from "./game-objects/player.js";
+import Crate from "./game-objects/crate.js";
 
 export default class Game {
 
@@ -9,7 +11,8 @@ export default class Game {
     }
 
     init() {
-        this.engine.addEntity(new Player());
+        EntityManager.addEntity(new Player());
+        EntityManager.addEntity(new Crate());
     }
 
     start() {
