@@ -1,5 +1,6 @@
 ﻿import Entity from "../../engine/ecs/entity.js";
 import Transform from "../../engine/ecs/components/transform.js"
+import Collider from "../../engine/ecs/components/collider.js";
 import Keyboard from "../../engine/input/keyboard.js";
 import Material from "../../engine/material/material.js";
 
@@ -11,6 +12,7 @@ export default class Player extends Entity {
 
         this.addComponent(new Transform(50, 50, 50, 40));
         this.addComponent(new Material("green"));
+        this.addComponent(new Collider());
     }
 
     draw(context) {
@@ -26,6 +28,14 @@ export default class Player extends Entity {
 
     update(deltaTime) {
         let transform = this.getComponent("Transform");
+        let collider = this.getComponent("Collider");
+        let material = this.getComponent("Material");
+
+        if (collider.hasCollided) {
+            material.colour = "pink";
+        } else {
+            material.colour = "green";
+        }
 
         if (Keyboard.IsKeyPressed("left")) {
             transform.x -= this.speed * deltaTime;

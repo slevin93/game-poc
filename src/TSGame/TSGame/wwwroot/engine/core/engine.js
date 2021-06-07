@@ -1,4 +1,5 @@
 ﻿import EntityManager from "./entity-manager.js"
+import PhysicsManager from "./physics_manager.js"
 
 export default class Engine {
 
@@ -14,6 +15,10 @@ export default class Engine {
 
     gameLoop(timeStamp) {
         var progress = timeStamp - this.lastRender;
+
+        // Before we update, we want to make sure there are no collisions
+        PhysicsManager.clearColliders(EntityManager.getEntity());
+        PhysicsManager.processCollision(EntityManager.getEntity());
 
         this.update(progress);
 

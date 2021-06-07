@@ -30,26 +30,3 @@ Keyboard.keyState = {
 
 window.addEventListener("keydown", Keyboard.keydown.bind(Keyboard), false);
 window.addEventListener("keyup", Keyboard.keyup.bind(Keyboard), false);
-
-
-// TODO: Investigate
-/*
-class UserStore {
-  constructor(){
-   if(! UserStore.instance){
-     this._data = [];
-     UserStore.instance = this;
-   }
-
-   return UserStore.instance;
-  }
-
- //rest is the same code as preceding example
-
-}
-
-const instance = new UserStore();
-Object.freeze(instance);
-
-export default instance;
-*/
